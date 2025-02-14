@@ -1,0 +1,8 @@
+import boto3
+
+s3 = boto3.client('s3')
+
+s3.upload_file("local_file.txt", "my-bucket", "uploaded_file.txt")
+print("File uploaded successfully!")
+
+## This uploads local_file.txt to my-bucket.
