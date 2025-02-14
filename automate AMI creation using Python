@@ -1,0 +1,14 @@
+import boto3
+
+ec2 = boto3.client('ec2')
+instance_id = "i-0abcd1234efgh5678"
+
+response = ec2.create_image(
+    InstanceId=instance_id,
+    Name="MyBackupAMI",
+    NoReboot=True
+)
+
+print("AMI ID:", response['ImageId'])
+
+## This creates an Amazon Machine Image (AMI) from an EC2 instance.
