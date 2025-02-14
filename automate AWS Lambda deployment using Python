@@ -1,0 +1,15 @@
+import boto3
+
+lambda_client = boto3.client('lambda')
+
+with open('lambda_function.zip', 'rb') as f:
+    zip_data = f.read()
+
+response = lambda_client.update_function_code(
+    FunctionName='myLambdaFunction',
+    ZipFile=zip_data
+)
+
+print("Lambda function updated:", response)
+
+### This updates an AWS Lambda function with new code.
