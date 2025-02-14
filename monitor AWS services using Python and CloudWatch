@@ -1,0 +1,13 @@
+import boto3
+
+cloudwatch = boto3.client('cloudwatch')
+response = cloudwatch.get_metric_statistics(
+    Namespace='AWS/EC2',
+    MetricName='CPUUtilization',
+    Dimensions=[{'Name': 'InstanceId', 'Value': 'i-1234567890abcdef0'}],
+    StartTime='2024-02-01T00:00:00Z',
+    EndTime='2024-02-02T00:00:00Z',
+    Period=3600,
+    Statistics=['Average']
+)
+print("CPU Utilization Data:", response)
