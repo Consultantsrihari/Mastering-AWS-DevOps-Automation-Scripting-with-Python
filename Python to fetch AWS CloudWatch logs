@@ -1,0 +1,9 @@
+import boto3
+
+logs = boto3.client('logs')
+
+response = logs.describe_log_groups()
+for log_group in response['logGroups']:
+    print(f"Log Group: {log_group['logGroupName']}")
+
+## This fetches all available CloudWatch log groups.
