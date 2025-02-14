@@ -1,0 +1,9 @@
+import boto3
+
+lambda_client = boto3.client('lambda')
+response = lambda_client.invoke(
+    FunctionName='myLambdaFunction',
+    InvocationType='Event'
+)
+
+print("Lambda triggered:", response)
