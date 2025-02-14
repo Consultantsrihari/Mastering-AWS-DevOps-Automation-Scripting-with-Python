@@ -1,0 +1,22 @@
+import boto3
+
+route53 = boto3.client('route53')
+
+response = route53.change_resource_record_sets(
+    HostedZoneId='ZXXXXXXXXXXXXX',
+    ChangeBatch={
+        'Changes': [{
+            'Action': 'CREATE',
+            'ResourceRecordSet': {
+                'Name': 'example.mydomain.com',
+                'Type': 'A',
+                'TTL': 300,
+                'ResourceRecords': [{'Value': '192.168.1.1'}]
+            }
+        }]
+    }
+)
+
+print("DNS record created:", response)
+
+### This creates an A record in Route 53.
